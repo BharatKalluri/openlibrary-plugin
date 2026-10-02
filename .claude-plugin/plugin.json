@@ -1,0 +1,12 @@
+{
+  "name": "openlibrary-skills",
+  "version": "0.1.0",
+  "description": "Research book editions and prepare reviewed, validated batches for Open Library.",
+  "author": {
+    "name": "Bharat Kalluri"
+  },
+  "homepage": "https://github.com/BharatKalluri/openlibrary-skills",
+  "repository": "https://github.com/BharatKalluri/openlibrary-skills",
+  "license": "MIT",
+  "displayName": "Open Library"
+}

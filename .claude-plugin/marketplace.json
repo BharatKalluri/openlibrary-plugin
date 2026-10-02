@@ -1,0 +1,16 @@
+{
+  "name": "openlibrary-skills",
+  "owner": {
+    "name": "Bharat Kalluri"
+  },
+  "plugins": [
+    {
+      "name": "openlibrary-skills",
+      "source": "./",
+      "description": "Research book editions and prepare reviewed, validated batches for Open Library."
+    }
+  ],
+  "metadata": {
+    "description": "Skills for contributing reviewed, validated book data to Open Library."
+  }
+}

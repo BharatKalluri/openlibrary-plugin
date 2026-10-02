@@ -22,13 +22,19 @@ Encourage users to collect many editions into one batch rather than submit one i
 ## Mandatory validation before sharing
 
 1. Save the complete candidate batch as a UTF-8 `.jsonl` file, one JSON object per physical line. No enclosing array, Markdown fences, or blank lines.
-2. Run the bundled Python validator on that exact file:
+2. Locate this installed skill’s directory and run its bundled Python validator on that exact file. For local environments with `uv`:
 
    ```sh
    uv run <skill-directory>/scripts/validate_jsonl.py /absolute/path/books.jsonl
    ```
 
-   Replace `<skill-directory>` with this skill's absolute directory. The script declares its `jsonschema` dependency for `uv`; it fetches the live official schema and follows external references on every invocation. Nothing is validated against a bundled schema snapshot.
+   Replace `<skill-directory>` with this installed skill's absolute directory, including when installed inside a plugin. The script declares its `jsonschema>=4.22,<5` dependency for `uv` and requires Python 3.10+. If the execution environment already supplies compatible `jsonschema` and `referencing` packages, use the same script directly:
+
+   ```sh
+   python3 <skill-directory>/scripts/validate_jsonl.py /absolute/path/books.jsonl
+   ```
+
+   Check the actual execution environment: desktop Chat may run code remotely. Use the host's supported dependency setup when necessary; do not ask a nontechnical user to run shell commands on their computer to fix a remote environment. If Python, dependencies, or network access are unavailable, explain the limitation and withhold import JSON. The script fetches the live official schema and follows external references on every invocation. Nothing is validated against a bundled schema snapshot.
 3. Require exit code 0 before sharing any import JSON, JSONL attachment, or copy/paste block. If fetching or validation fails, fix the issue and rerun. Do not substitute a required-field check, manual inspection, or a cached schema for full validation.
 4. Validate every record. Any edit after validation invalidates the result: rerun on the final file. If pasting JSONL in chat, reproduce the validated file exactly.
 
